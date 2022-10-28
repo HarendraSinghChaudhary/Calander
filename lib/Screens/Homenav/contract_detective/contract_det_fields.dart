@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:calcu_lien/Screens/Homenav/contract_detective/contract_detective.dart';
 import 'package:calcu_lien/Screens/Homenav/contract_detective/contract_detective1.dart';
 import 'package:calcu_lien/Screens/Homenav/homenav.dart';
@@ -12,7 +14,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class contract_detectiveFields extends StatefulWidget {
-  const contract_detectiveFields({Key? key}) : super(key: key);
+  File file;
+  String mail;
+   contract_detectiveFields({Key? key,required this.file, required this.mail}) : super(key: key);
 
   @override
   State<contract_detectiveFields> createState() =>
@@ -310,11 +314,12 @@ class contract_detectiveFieldsState extends State<contract_detectiveFields> {
                           radius: 2,
                           press: () {
                             if (_formkey.currentState!.validate()) {
-                              showModalBottomSheet(
-                                  backgroundColor: Colors.transparent,
-                                  isScrollControlled: true,
-                                  context: context,
-                                  builder: (ctx) => _Report(ctx));
+                              
+                              // showModalBottomSheet(
+                              //     backgroundColor: Colors.transparent,
+                              //     isScrollControlled: true,
+                              //     context: context,
+                              //     builder: (ctx) => _Report(ctx));
                             }
                           },
                           fontWeight: FontWeight.w500,

@@ -158,3 +158,5 @@ class DefaultButtonCurve extends StatelessWidget {
     );
   }
 }
+
+const loader = Center(child: CircularProgressIndicator());

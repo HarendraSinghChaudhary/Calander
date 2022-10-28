@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:calcu_lien/Screens/Homenav/contract_detective/contract_det_fields.dart';
 import 'package:calcu_lien/Screens/Homenav/contract_detective/contract_detective1.dart';
+import 'package:calcu_lien/Services/apisMethod.dart';
+import 'package:calcu_lien/Services/pickfile.dart';
 import 'package:calcu_lien/main.dart';
 import 'package:calcu_lien/utils/constants/images.dart';
 import 'package:calcu_lien/utils/constants/screennavigation.dart';
@@ -25,7 +29,8 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
 
   TextEditingController controller = TextEditingController();
   bool isEmail(String input) => EmailValidator.validate(input);
-
+  File file = File("");
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +96,15 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                               text: "Upload Contract",
                               txtcolor: kblack,
                               radius: 10,
-                              press: () {},
+                              press: () {
+                                filePicker().then((value) {
+                                  if(value!=null){
+                                    file = File(value);
+                                  }
+                                  setState(() {});
+                                });
+                                
+                              },
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                               btncolor: bttnClr),
@@ -152,6 +165,15 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                           child: Text(
                               "Only PDF, DOC and DOCX formats are acceptable",
                               style: textGrey.copyWith(color: ktiledarkcolor))),
+                              Visibility(
+                                visible: file.path!="",
+                                child: Padding(
+                                                        padding: EdgeInsets.only(
+                                top: w * 0.017, bottom: w * 0.020),
+                                                        child: Text(
+                                file.path.split("/").last,
+                                style: textGrey.copyWith(color: ktiledarkcolor,fontWeight: FontWeight.w700))),
+                              ),
                       const Text(
                         "Provide an email address where you like to receive email .",
                         style: textGrey,
@@ -185,7 +207,7 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                       // const SizedBox(
                       //   height: 28,
                       // ),
-                      DefaultEButton(
+                     isLoading?loader: DefaultEButton(
                           width: double.infinity,
                           height: h * 0.072,
                           text: "Submit",
@@ -193,7 +215,24 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                           radius: 2,
                           press: () {
                             if (_formkey.currentState!.validate()) {
-                              pushTo(context, const contract_detectiveFields());
+                              isLoading=true;
+                              setState(() {
+                                
+                              });
+                              uploadFile(file).then((value) {
+                                setState(() {
+                                  isLoading=false;
+                                });
+                                print("api done");
+                                if(value!=null){
+                                  print("condition");
+                              pushTo(context,  contract_detectiveFields(file: file,mail: controller.text,));
+                                  print("condition, end");
+
+                                }
+                                
+                                print(value);
+                              });
                             }
                           },
                           fontWeight: FontWeight.w500,
