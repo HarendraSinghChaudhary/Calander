@@ -43,5 +43,30 @@ Future uploadDetail(
   String city,
   String state
 )async{
+  try {
+  var response =await http.post(
+    Uri.parse(detailUpload),
+    body: {
+  "extract_request_id":extract_request_id,
+    "convert_request_id":convert_request_id,
+    "email":email,
+    "first_name":first_name,
+    "last_name":last_name,
+    "company":company,
+    "role":role,
+    "city":city,
+    "state":state
+    }
+  );
+  if(response.statusCode == 200){
+    return true;
+  }else{
+    return false;
+  }
+} on Exception catch (e) {
+  // TODO
+  return false;
+}
   
+
 }

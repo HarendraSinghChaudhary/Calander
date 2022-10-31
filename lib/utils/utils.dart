@@ -160,3 +160,7 @@ class DefaultButtonCurve extends StatelessWidget {
 }
 
 const loader = Center(child: CircularProgressIndicator());
+
+Future showSnack(BuildContext context, String msg)async{
+  return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+}

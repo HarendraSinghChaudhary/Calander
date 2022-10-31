@@ -13,10 +13,14 @@ import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../Services/apisMethod.dart';
+
 class contract_detectiveFields extends StatefulWidget {
-  File file;
-  String mail;
-   contract_detectiveFields({Key? key,required this.file, required this.mail}) : super(key: key);
+  final File file;
+  final String mail;
+  final String extract_request_id;
+  final String convert_request_id;
+   contract_detectiveFields({Key? key,required this.file, required this.mail, required this.extract_request_id, required this.convert_request_id}) : super(key: key);
 
   @override
   State<contract_detectiveFields> createState() =>
@@ -24,13 +28,15 @@ class contract_detectiveFields extends StatefulWidget {
 }
 
 class contract_detectiveFieldsState extends State<contract_detectiveFields> {
-  String statevalue = "State";
-  var SelectState = ['State', 'Rajasthan', 'Gujarat', 'U.P.', 'Punjab'];
+  String statevalue = "FL";
+  var SelectState = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
   String rolevalue = "My role on this project is the …";
   var RoleState = [
     'My role on this project is the …',
+    "Design Professional", "General Contractor","Subcontractor", "Sub-subcontractor", "Material Supplier", "Other"
   ];
+  bool isLoading = false;
   final _formkey = GlobalKey<FormState>();
   TextEditingController firstnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
@@ -306,7 +312,7 @@ class contract_detectiveFieldsState extends State<contract_detectiveFields> {
                       const SizedBox(
                         height: 20,
                       ),
-                      DefaultEButton(
+                    isLoading?loader:  DefaultEButton(
                           width: double.infinity,
                           height: h * 0.069,
                           text: "Analyze",
@@ -314,12 +320,37 @@ class contract_detectiveFieldsState extends State<contract_detectiveFields> {
                           radius: 2,
                           press: () {
                             if (_formkey.currentState!.validate()) {
-                              
-                              // showModalBottomSheet(
-                              //     backgroundColor: Colors.transparent,
-                              //     isScrollControlled: true,
-                              //     context: context,
-                              //     builder: (ctx) => _Report(ctx));
+                              setState(() {
+                                isLoading = true;
+                              });
+                              uploadDetail(
+                                widget.extract_request_id,
+                                widget.convert_request_id,
+                                widget.mail,
+                                firstnameController.text,
+                                lastnameController.text,
+                                companyController.text,
+                                rolevalue,
+                                cityController.text,
+                                statevalue
+                              ).then((value) {
+                                setState(() {
+                                isLoading = false;
+                              });
+                                if(value){
+                                  showModalBottomSheet(
+                                  backgroundColor: Colors.transparent,
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (ctx) => _Report(ctx)).whenComplete(() {
+                                    pushNdRemove(context, HomeNav(currentindex: 2,));
+                                  });
+
+                                }else{
+
+                                }
+                              });
+                             
                             }
                           },
                           fontWeight: FontWeight.w500,
@@ -337,6 +368,13 @@ class contract_detectiveFieldsState extends State<contract_detectiveFields> {
   }
 
   _Report(BuildContext context) {
+    Future.delayed(
+      const Duration(seconds: 2),
+      (){
+        Navigator.pop(context);
+      }
+
+    );
     return StatefulBuilder(builder: (context, setState) {
       return Container(
         height: h * 0.55,

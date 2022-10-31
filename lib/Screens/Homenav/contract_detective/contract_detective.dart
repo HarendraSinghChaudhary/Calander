@@ -183,6 +183,7 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                             EdgeInsets.only(top: w * 0.017, bottom: w * 0.07),
                         child: TextFormField(
                           controller: controller,
+                          keyboardType: TextInputType.emailAddress,
                           maxLines: 1,
                           validator: ((emailController) {
                             if (emailController!.isEmpty) {
@@ -214,6 +215,10 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                           txtcolor: kwhite,
                           radius: 2,
                           press: () {
+                            if(file.path.isEmpty){
+                             return showSnack(context, "Please Select Document");
+                              
+                            }
                             if (_formkey.currentState!.validate()) {
                               isLoading=true;
                               setState(() {
@@ -226,7 +231,15 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                                 print("api done");
                                 if(value!=null){
                                   print("condition");
-                              pushTo(context,  contract_detectiveFields(file: file,mail: controller.text,));
+                                  String data = value;
+                              pushTo(
+                                context,  
+                                contract_detectiveFields(
+                                  file: file,
+                                  mail: controller.text,
+                                  convert_request_id: data.split(",").last,
+                                  extract_request_id: data.split(",").first,
+                                  ));
                                   print("condition, end");
 
                                 }
