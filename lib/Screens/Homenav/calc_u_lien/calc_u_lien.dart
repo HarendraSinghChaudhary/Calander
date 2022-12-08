@@ -411,48 +411,81 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                     }
                   });
                   setState(() {
-                    //29 OCT
+                    //15 OCT
+                    if (angleValue == -75) {
+                      startdate = DateTime(staticdate.year, 10, 15);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    } //29 OCT
                     if (angleValue == -91) {
                       startdate = DateTime(staticdate.year, 10, 31);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    } //15 NOV
+                    if (angleValue == -105) {
+                      startdate = DateTime(staticdate.year, 11, 15);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //30 NOV
                     if (angleValue == -120) {
                       startdate = DateTime(staticdate.year, 11, 30);
                       endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //31 DEC
+                    } //15 DEC
+                    if (angleValue == -134) {
+                      startdate = DateTime(staticdate.year, 12, 15);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    } //31 DEC
                     if (angleValue == -150) {
                       startdate = DateTime(staticdate.year, 12, 31);
                       endDate = startdate.add(Duration(days: daysDifference));
+                    } //15 JAN
+                    if (angleValue == 195) {
+                      startdate = DateTime(staticdate.year, 01, 15);
+                      endDate = startdate.add(Duration(days: daysDifference));
                     } //31 JAN
-                    if (angleValue == 178) {
+                    if (angleValue == 179) {
                       startdate = DateTime(staticdate.year, 01, 31);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    } //15 FEB
+                    if (angleValue == -194) {
+                      startdate = DateTime(staticdate.year, 02, 15);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //28 FEB
                     if (angleValue == -207) {
                       startdate = DateTime(staticdate.year, 02, 28);
                       endDate = startdate.add(Duration(days: daysDifference));
+                    } //15 MARCH
+                    if (angleValue == 137) {
+                      startdate = DateTime(staticdate.year, 03, 15);
+                      endDate = startdate.add(Duration(days: daysDifference));
                     } //31 MARCH
                     if (angleValue == 122) {
                       startdate = DateTime(staticdate.year, 03, 31);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    } //15 April
+                    if (angleValue == 107) {
+                      startdate = DateTime(staticdate.year, 04, 15);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //30 APRIL
                     if (angleValue == 92) {
                       startdate = DateTime(staticdate.year, 04, 30);
                       endDate = startdate.add(Duration(days: daysDifference));
+                    } //15 MAY
+                    if (angleValue == 76) {
+                      startdate = DateTime(staticdate.year, 05, 15);
+                      endDate = startdate.add(Duration(days: daysDifference));
                     } //31 MAY
                     if (angleValue == 60) {
                       startdate = DateTime(staticdate.year, 05, 31);
                       endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //30 JUNE
+                    } //15 JUNE
+                    if (angleValue == 45) {
+                      startdate = DateTime(staticdate.year, 06, 15);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    } //30 JUNE
                     if (angleValue == 30 ||
                         angleValue == 390 ||
                         angleValue == 750) {
                       startdate = DateTime(staticdate.year, 06, 30);
                       endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //31 JULY
+                    } //31 JULY
                     if (angleValue == 360 ||
                         angleValue == 0 ||
                         angleValue == 720) {
