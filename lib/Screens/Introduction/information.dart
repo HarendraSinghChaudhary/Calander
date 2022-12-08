@@ -1,4 +1,5 @@
 import 'package:calcu_lien/Screens/Introduction/menu.dart';
+import 'package:calcu_lien/utils/Preference/preference.dart';
 
 import 'package:calcu_lien/utils/constants/screennavigation.dart';
 import 'package:calcu_lien/utils/styleguide.dart';
@@ -15,6 +16,14 @@ class Information extends StatefulWidget {
 
 class _InformationState extends State<Information> {
   bool valuefirst = false;
+
+  @override
+  void initState() {
+
+    Preference.pref.setBool("isNewUser",false);
+    super.initState();
+    
+  }
 
   @override
   Widget build(BuildContext context) {

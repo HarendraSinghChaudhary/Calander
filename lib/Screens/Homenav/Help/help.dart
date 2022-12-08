@@ -8,7 +8,7 @@ import 'package:calcu_lien/utils/styleguide.dart';
 import 'package:calcu_lien/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class Help extends StatefulWidget {
   const Help({Key? key}) : super(key: key);
 
@@ -17,10 +17,68 @@ class Help extends StatefulWidget {
 }
 
 class _HelpState extends State<Help> {
+
+  bool _hasCallSupport = false;
+
+ 
+
+
+  @override
+  void initState() {
+
+    canLaunchUrl(Uri(scheme: 'tel', path: '123')).then((bool result) {
+      setState(() {
+        _hasCallSupport = result;
+      });
+    });
+
+   
+
+    super.initState();
+    
+  }
+    Future makePhoneCall() async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: "305-347-5295",
+    );
+    await launchUrl(launchUri);
+  }
+
+  
+
+
+ Future<void> _launchUniversalLinkIos(Uri url) async {
+    final bool nativeAppLaunchSucceeded = await launchUrl(
+      url,
+      mode: LaunchMode.externalNonBrowserApplication,
+    );
+    if (!nativeAppLaunchSucceeded) {
+      await launchUrl(
+        url,
+        mode: LaunchMode.externalNonBrowserApplication,
+      );
+    }
+  }
+
+ 
+
+
+
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
+   var  h = MediaQuery.of(context).size.height;
+  var  w = MediaQuery.of(context).size.width;
+
+ final Uri toLaunch =
+        Uri(scheme: 'http', path: 'www.youtube.com/@TheLienZoneConstructionLawBlog/videos',);
+ 
     return Scaffold(
+       bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom:w*0.03,right:w*0.03 ),
+         child: defRow(context),
+       ),
       appBar: AppBar(
         backgroundColor: ktiledarkcolor,
         automaticallyImplyLeading: false,
@@ -41,7 +99,13 @@ class _HelpState extends State<Help> {
       body: Column(
         children: [
           ListTile(
-            onTap: () {},
+            onTap: (){
+              setState(() {
+                _launchUniversalLinkIos(toLaunch);
+                
+              });
+
+            },
             minLeadingWidth: 0,
             leading: SvgPicture.asset(EduVidIcon),
             title: Text(
@@ -71,11 +135,15 @@ class _HelpState extends State<Help> {
             color: dividerClr,
           ),
           ListTile(
-            onTap: (() {}),
+            onTap: _hasCallSupport
+                    ? () => setState(() {
+                          makePhoneCall();
+                        })
+                    : null,
             minLeadingWidth: 0,
             leading: SvgPicture.asset(LiveAssistIcon),
             title: Text(
-              "Call me for live assistance?",
+              "Call me, Alex Barthet (305-347-5295)",
               style: textfContent.copyWith(fontWeight: FontWeight.w400),
             ),
             trailing: const Icon(Icons.keyboard_arrow_right),
@@ -85,13 +153,15 @@ class _HelpState extends State<Help> {
             color: dividerClr,
           ),
           ListTile(
-            onTap: (() {
-              PushTo(context, const Help_And_Support());
-            }),
+            onTap:() async{
+              setState(() {
+                launchUrl(Uri.parse("mailto:alex@barthet.com"));
+              });
+            },
             minLeadingWidth: 0,
-            leading: SvgPicture.asset(HelpNdSupIcon),
+            leading: SvgPicture.asset(emailIcon,color: ktiledarkcolor,),
             title: Text(
-              "Help and Support",
+              "Email me (alex@barthet.com)",
               style: textfContent.copyWith(fontWeight: FontWeight.w400),
             ),
             trailing: const Icon(Icons.keyboard_arrow_right),
@@ -100,22 +170,7 @@ class _HelpState extends State<Help> {
             height: 1,
             color: dividerClr,
           ),
-          ListTile(
-            onTap: (() {
-              PushTo(context, const About_Us());
-            }),
-            minLeadingWidth: 0,
-            leading: SvgPicture.asset(aboutUsIcon),
-            title: Text(
-              "About us",
-              style: textfContent.copyWith(fontWeight: FontWeight.w400),
-            ),
-            trailing: const Icon(Icons.keyboard_arrow_right),
-          ),
-          const Divider(
-            height: 1,
-            color: dividerClr,
-          ),
+         
           ListTile(
             onTap: (() {
               PushTo(context, const Setting());
@@ -136,4 +191,6 @@ class _HelpState extends State<Help> {
       ),
     );
   }
+
+  
 }

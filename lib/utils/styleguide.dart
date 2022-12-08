@@ -23,3 +23,14 @@ const TextStyle textbold =
 
 const TextStyle textGrey =
     TextStyle(color: kgreyclr, fontWeight: FontWeight.w400, fontSize: 16);
+
+
+
+const TextStyle underLinedtxt =
+    TextStyle(color: kblack, fontWeight: FontWeight.w600, fontSize: 18,decoration: TextDecoration.underline);
+
+const TextStyle priContent =
+    TextStyle(color: kblack, fontWeight: FontWeight.normal, fontSize: 16);    
+
+      const TextStyle boldExcepText =
+    TextStyle(color: kblack, fontWeight: FontWeight.w600, fontSize: 18,);

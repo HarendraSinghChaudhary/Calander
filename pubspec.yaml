@@ -57,6 +57,8 @@ dev_dependencies:
   text_scroll: ^0.1.0
   email_validator: ^2.1.17
   expandable: ^5.0.1
+  shared_preferences: ^2.0.15
+  url_launcher: ^6.1.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

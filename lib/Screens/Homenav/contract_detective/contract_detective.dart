@@ -11,10 +11,7 @@ import 'package:calcu_lien/utils/styleguide.dart';
 import 'package:calcu_lien/utils/utils.dart';
 import 'package:calcu_lien/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:email_validator/email_validator.dart';
 
 class Contract_Detective extends StatefulWidget {
@@ -33,7 +30,14 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+
+    h = MediaQuery.of(context).size.height;
+    w = MediaQuery.of(context).size.width;
     return Scaffold(
+       bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom:w*0.03,right:w*0.03 ),
+         child: defRow(context),
+       ),
       body: Form(
         key: _formkey,
         child: Column(
@@ -49,14 +53,16 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 20,
+                padding:  EdgeInsets.only(
+                 top: w*0.1,bottom: w*0.02 
                 ),
-                child: Image.asset(
-                  ContractDetective,
-                  color: kwhite,
-                  height: 115,
-                  width: 196,
+                child: Center(
+                  child: Image.asset(
+                    ContractDetective,
+                    color: kwhite,
+                    height: h*0.5,
+                        width:w*0.7,
+                  ),
                 ),
               ),
             ),
@@ -234,7 +240,7 @@ class _Contract_DetectiveState extends State<Contract_Detective> {
                                   String data = value;
                               pushTo(
                                 context,  
-                                contract_detectiveFields(
+                                ContractDetectiveFields(
                                   file: file,
                                   mail: controller.text,
                                   convert_request_id: data.split(",").last,

@@ -23,7 +23,7 @@ class _HomeNavState extends State<HomeNav> {
 
   final _pageoption = [
     const Calc_u_Lien(),
-    const Lien_o_matic(),
+    const LienOMatic(),
     const Contract_Detective(),
     podcast(),
     const Help()
@@ -49,72 +49,92 @@ class _HomeNavState extends State<HomeNav> {
         selectable: false,
         mode: TextScrollMode.endless,
       ),
-      body: _pageoption[_index!],
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          elevation: 3,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: BottomNavigationBar(
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              iconSize: 20,
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: ktiledarkcolor,
-              unselectedFontSize: 12,
-              selectedFontSize: 12,
-              unselectedItemColor: homeNavIcnClr,
+      // body: _pageoption[_index!],
+      bottomNavigationBar:
 
-              // selectedLabelStyle:
-              //     GoogleFonts.hind( fontWeight: FontWeight.normal),
-              items: [
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      firstIcon,
-                      color: _index == 0 ? ktiledarkcolor : homeNavIcnClr,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      secondIcon,
-                      color: _index == 1 ? ktiledarkcolor : homeNavIcnClr,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      thirdIcon,
-                      color: _index == 2 ? ktiledarkcolor : homeNavIcnClr,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.mic_rounded,
-                    size: 35,
-                    color: _index == 3 ? ktiledarkcolor : homeNavIcnClr,
-                  ),
-                  label: "",
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    fifthIcon,
-                    color: _index == 4 ? ktiledarkcolor : homeNavIcnClr,
-                  ),
-                  label: "",
-                ),
-              ],
-              currentIndex: _index!,
-              onTap: (index) {
-                setState(() {
-                  _index = index;
-                });
-              },
-            ),
-          ),
-        ),
+      Row(
+        children:  [
+      const    TextScroll(
+        "How to file your income tax on time and available, textscroll",
+        style: textScroll,
+        intervalSpaces: 50,
+        delayBefore: Duration(seconds: 1),
+        velocity: Velocity(pixelsPerSecond: Offset(50, 0)),
+        selectable: false,
+        mode: TextScrollMode.endless,
       ),
+
+      SvgPicture.asset("assets/svgIcons/homeIcon.svg")
+      
+          
+        ],
+      )
+      
+      //  Padding(
+      //   padding: const EdgeInsets.all(8.0),
+      //   child: Card(
+      //     shape:
+      //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      //     elevation: 3,
+      //     child: ClipRRect(
+      //       borderRadius: BorderRadius.circular(20),
+      //       child: BottomNavigationBar(
+      //         showSelectedLabels: false,
+      //         showUnselectedLabels: false,
+      //         iconSize: 20,
+      //         type: BottomNavigationBarType.fixed,
+      //         selectedItemColor: ktiledarkcolor,
+      //         unselectedFontSize: 12,
+      //         selectedFontSize: 12,
+      //         unselectedItemColor: homeNavIcnClr,
+
+      //         // selectedLabelStyle:
+      //         //     GoogleFonts.hind( fontWeight: FontWeight.normal),
+      //         items: [
+      //           BottomNavigationBarItem(
+      //               icon: SvgPicture.asset(
+      //                 firstIcon,
+      //                 color: _index == 0 ? ktiledarkcolor : homeNavIcnClr,
+      //               ),
+      //               label: ""),
+      //           BottomNavigationBarItem(
+      //               icon: SvgPicture.asset(
+      //                 secondIcon,
+      //                 color: _index == 1 ? ktiledarkcolor : homeNavIcnClr,
+      //               ),
+      //               label: ""),
+      //           BottomNavigationBarItem(
+      //               icon: SvgPicture.asset(
+      //                 thirdIcon,
+      //                 color: _index == 2 ? ktiledarkcolor : homeNavIcnClr,
+      //               ),
+      //               label: ""),
+      //           BottomNavigationBarItem(
+      //             icon: Icon(
+      //               Icons.mic_rounded,
+      //               size: 35,
+      //               color: _index == 3 ? ktiledarkcolor : homeNavIcnClr,
+      //             ),
+      //             label: "",
+      //           ),
+      //           BottomNavigationBarItem(
+      //             icon: SvgPicture.asset(
+      //               fifthIcon,
+      //               color: _index == 4 ? ktiledarkcolor : homeNavIcnClr,
+      //             ),
+      //             label: "",
+      //           ),
+      //         ],
+      //         currentIndex: _index!,
+      //         onTap: (index) {
+      //           setState(() {
+      //             _index = index;
+      //           });
+      //         },
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

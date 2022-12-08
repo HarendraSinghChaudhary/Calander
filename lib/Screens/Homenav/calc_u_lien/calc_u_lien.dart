@@ -47,21 +47,28 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
   var endDate = DateTime(2022, 09, 12);
 
   //drop down selected value
-  String dropdownValue = "Florida notice to owner(45 Days)";
+  String dropdownValue = "Florida Notice to Owner (45 Days)";
 
   int daysDifference = 45;
   DateTime selectedDate = DateTime(2022, 07, 29);
 
   var Notice = [
-    'Florida notice to owner(45 Days)',
+    'Florida Notice to Owner (45 Days)',
     'Florida Claim of Lien (90 Days)',
     'Florida Bond Claim (90 Days)'
   ];
 
   @override
   Widget build(BuildContext context) {
+     h = MediaQuery.of(context).size.height;
+    w = MediaQuery.of(context).size.width;
+    
     String _joningdate = DateFormat.yMd().format(startdate);
     String _enddate = DateFormat.yMd().format(endDate);
+
+    String _joiningDayName = DateFormat('EEEE').format(startdate).toString();
+    String _endDayName = DateFormat('EEEE').format(endDate).toString();
+    
     return Scaffold(
       body: Stack(
         children: [
@@ -69,11 +76,11 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
           rightWheel(),
           leftArrow(),
           rightArrow(),
-          Center(
-              child: Text(
-            dropdownValue,
-            style: textScroll,
-          )),
+          // Center(
+          //     child: Text(
+          //   dropdownValue,
+          //   style: textScroll,
+          // )),
           Column(
             children: [
               Container(
@@ -87,11 +94,14 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                   ),
                 ),
                 child: Center(
-                  child: Image.asset(
-                    Calc_u_Lien_logo,
-                    height: h * 0.15,
-                    width: w * 0.3,
-                    color: kwhite,
+                  child: Padding(
+                    padding:  EdgeInsets.only(top: w*0.05),
+                    child: Image.asset(
+                      Calc_u_Lien_logo,
+                      height: h * 0.5,
+                      width: w * 0.5,
+                      color: kwhite,
+                    ),
                   ),
                 ),
               ),
@@ -110,7 +120,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                         setState(() {
                           dropdownValue = newValue ?? "";
                           if (dropdownValue ==
-                              "Florida notice to owner(45 Days)") {
+                              "Florida Notice to Owner (45 Days)") {
                             daysFilter = for45Days;
                             daysDifference = 45;
                             staticEnddate = DateTime(2022, 09, 12);
@@ -144,7 +154,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                 padding: EdgeInsets.only(
                     left: w * 0.03,
                     right: w * 0.03,
-                    top: w * 0.03,
+                    top: w * 0.01,
                     bottom: w * 0.06),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,56 +163,90 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                       onTap: () {
                         _selectDate("startDate", context);
                       },
-                      child: SizedBox(
-                        height: h * 0.07,
-                        width: w * 0.45,
-                        child: Card(
-                          elevation: 3,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.calendar_month_sharp,
-                                  color: ktiledarkcolor),
-                              const SizedBox(
-                                width: 10,
+                      child: Column(
+                        children: [
+                          Text(dropdownValue == "Florida Notice to Owner (45 Days)" ? "First Work" : "Last Work",style: textScroll,),
+                          SizedBox(
+                            // height: h * 0.085,
+                            // width: w * 0.45,
+                            child: Card(
+                              elevation: 3,
+                              child: Padding(
+                                padding:  EdgeInsets.only(top:w*0.01,bottom: w*0.01,left: w*0.06,right: w*0.06),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.calendar_month_sharp,
+                                        color: ktiledarkcolor),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Padding(
+                                      padding:  EdgeInsets.only(top:w*0.024),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            _joningdate,
+                                            style: textbold.copyWith(color: ktiledarkcolor),
+                                          ),
+                                          Text(
+                                      _joiningDayName,
+                                      style: textbold.copyWith(color: ktiledarkcolor),
+                                  ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Text(
-                                _joningdate,
-                                style: textbold.copyWith(color: ktiledarkcolor),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                     // const SizedBox(
                     //   width: 13,
                     // ),
-                    SizedBox(
-                      height: h * 0.07,
-                      width: w * 0.45,
-                      child: InkWell(
-                        onTap: () {
-                          _selectDate("startDate", context);
-                        },
-                        child: Card(
-                          elevation: 3,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.calendar_month_sharp,
-                                  color: ktiledarkcolor),
-                              const SizedBox(
-                                width: 10,
+                    Column(
+                      children: [
+                     const   Text("Deadline",style: textScroll,),
+                        InkWell(
+                          onTap: () {
+                            _selectDate("startDate", context);
+                          },
+                          child: Card(
+                            elevation: 3,
+                            child: Padding(
+                              padding:  EdgeInsets.only(top:w*0.01,bottom: w*0.01,left: w*0.06,right: w*0.06),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(Icons.calendar_month_sharp,
+                                      color: ktiledarkcolor),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(top:w*0.024),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          _enddate,
+                                          style: textbold.copyWith(color: ktiledarkcolor),
+                                        ),
+                                        Text(
+                                    _endDayName,
+                                    style: textbold.copyWith(color: ktiledarkcolor),
+                                ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                _enddate,
-                                style: textbold.copyWith(color: ktiledarkcolor),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
@@ -211,15 +255,20 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ktiledarkcolor,
-        onPressed: () {
-          replaceRoute(context, HomeNav(currentindex: 4));
-        },
-        child: const Icon(
-          Icons.question_mark,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: ktiledarkcolor,
+      //   onPressed: () {
+      //     replaceRoute(context, HomeNav(currentindex: 4));
+      //   },
+      //   child: const Icon(
+      //     Icons.question_mark,
+      //   ),
+      // ),
+
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom:w*0.03,right:w*0.03 ),
+        child: defRow(context),
+      )
     );
   }
 
@@ -316,7 +365,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                           staticEnddate.year,
                           staticEnddate.month,
                           staticEnddate.day + valueAnngle.toInt().abs() - 1);
-                      if (dropdownValue != "Florida notice to owner(45 Days)") {
+                      if (dropdownValue != "Florida Notice to Owner (45 Days)") {
                         endDate = DateTime(
                             endDate.year, endDate.month, endDate.day + 2);
                       } else {
@@ -341,7 +390,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                           staticEnddate.month,
                           staticEnddate.day - valueAnngle.toInt() - 1);
 
-                      if (dropdownValue != "Florida notice to owner(45 Days)") {
+                      if (dropdownValue != "Florida Notice to Owner (45 Days)") {
                         endDate = DateTime(
                             endDate.year, endDate.month, endDate.day - 2);
                       } else {

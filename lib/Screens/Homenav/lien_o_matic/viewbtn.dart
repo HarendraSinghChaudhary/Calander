@@ -15,6 +15,8 @@ class View_Btn extends StatefulWidget {
 class _View_BtnState extends State<View_Btn> {
   @override
   Widget build(BuildContext context) {
+      var  h = MediaQuery.of(context).size.height;
+   var w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 68, 110, 97),
@@ -25,7 +27,7 @@ class _View_BtnState extends State<View_Btn> {
             pushRemove(
                 context,
                 An_Architect(
-                  project: projects,
+                  project: projects, title: null,
                 ));
           },
           iconSize: 16,

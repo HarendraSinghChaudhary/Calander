@@ -1,5 +1,7 @@
 import 'dart:async';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:calcu_lien/Screens/Introduction/menu.dart';
+import 'package:calcu_lien/main.dart';
 import 'package:calcu_lien/utils/constants/images.dart';
 import 'package:calcu_lien/utils/constants/screennavigation.dart';
 import 'package:calcu_lien/Screens/Introduction/information.dart';
@@ -17,7 +19,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 3), () => replaceRoute(context, Information()));
+        const Duration(seconds: 3), () => replaceRoute(context, isNewUser ? const Information() : const Menu()));
   }
 
   @override
@@ -25,7 +27,7 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        child: Image.asset("assets/pngIcons/Splash_logo_TheLienZone.png"),
+        child: SvgPicture.asset(SplashImage),
       ),
     );
   }

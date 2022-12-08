@@ -15,19 +15,19 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../Services/apisMethod.dart';
 
-class contract_detectiveFields extends StatefulWidget {
+class ContractDetectiveFields extends StatefulWidget {
   final File file;
   final String mail;
   final String extract_request_id;
   final String convert_request_id;
-   contract_detectiveFields({Key? key,required this.file, required this.mail, required this.extract_request_id, required this.convert_request_id}) : super(key: key);
+   ContractDetectiveFields({Key? key,required this.file, required this.mail, required this.extract_request_id, required this.convert_request_id}) : super(key: key);
 
   @override
-  State<contract_detectiveFields> createState() =>
-      contract_detectiveFieldsState();
+  State<ContractDetectiveFields> createState() =>
+      ContractDetectiveFieldsState();
 }
 
-class contract_detectiveFieldsState extends State<contract_detectiveFields> {
+class ContractDetectiveFieldsState extends State<ContractDetectiveFields> {
   String statevalue = "FL";
   var SelectState = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
@@ -83,7 +83,7 @@ class contract_detectiveFieldsState extends State<contract_detectiveFields> {
                     size: 20,
                   ),
                   onPressed: () {
-                    pushRemove(context, HomeNav(currentindex: 2));
+                    pushRemove(context,const Contract_Detective());
                   },
                 ),
               ),

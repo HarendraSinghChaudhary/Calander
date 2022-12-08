@@ -18,6 +18,8 @@ class Help_And_Support extends StatefulWidget {
 class _Help_And_SupportState extends State<Help_And_Support> {
   @override
   Widget build(BuildContext context) {
+      var  h = MediaQuery.of(context).size.height;
+   var w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ktiledarkcolor,
@@ -25,11 +27,11 @@ class _Help_And_SupportState extends State<Help_And_Support> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
-            pushRemove(
-                context,
-                HomeNav(
-                  currentindex: 4,
-                ));
+            // pushRemove(
+            //     context,
+            //     HomeNav(
+            //       currentindex: 4,
+            //     ));
           },
           iconSize: 16,
         ),

@@ -1,5 +1,6 @@
 import 'package:calcu_lien/Screens/Homenav/Help/Settings/privacy-policy.dart';
 import 'package:calcu_lien/Screens/Homenav/Help/Settings/terms_and_conditions.dart';
+import 'package:calcu_lien/Screens/Homenav/Help/help.dart';
 import 'package:calcu_lien/Screens/Homenav/homenav.dart';
 import 'package:calcu_lien/utils/colors.dart';
 import 'package:calcu_lien/utils/constants/images.dart';
@@ -19,6 +20,8 @@ class Setting extends StatefulWidget {
 class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
+      var  h = MediaQuery.of(context).size.height;
+   var w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ktiledarkcolor,
@@ -28,9 +31,7 @@ class _SettingState extends State<Setting> {
           onPressed: () {
             pushRemove(
                 context,
-                HomeNav(
-                  currentindex: 4,
-                ));
+                const Help());
           },
           iconSize: 16,
         ),
@@ -44,7 +45,7 @@ class _SettingState extends State<Setting> {
         children: [
           ListTile(
             onTap: (() {
-              PushTo(context, const Privacy_Policy());
+              PushTo(context, const PrivacyPolicy());
             }),
             minLeadingWidth: 0,
             leading: SvgPicture.asset(privacypolicyIcon),

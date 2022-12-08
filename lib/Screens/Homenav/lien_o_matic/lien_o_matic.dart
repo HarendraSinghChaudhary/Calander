@@ -1,23 +1,28 @@
 import 'package:calcu_lien/Screens/Homenav/lien_o_matic/an_architect.dart';
 import 'package:calcu_lien/utils/constants/images.dart';
-import 'package:calcu_lien/utils/constants/screennavigation.dart';
 import 'package:calcu_lien/utils/projects.dart';
 import 'package:calcu_lien/utils/styleguide.dart';
 import 'package:calcu_lien/utils/utils.dart';
 import 'package:calcu_lien/utils/colors.dart';
 import 'package:flutter/material.dart';
 
-class Lien_o_matic extends StatefulWidget {
-  const Lien_o_matic({Key? key}) : super(key: key);
+class LienOMatic extends StatefulWidget {
+  const LienOMatic({Key? key}) : super(key: key);
 
   @override
-  State<Lien_o_matic> createState() => _Lien_o_maticState();
+  State<LienOMatic> createState() => _LienOMaticState();
 }
 
-class _Lien_o_maticState extends State<Lien_o_matic> {
+class _LienOMaticState extends State<LienOMatic> {
   @override
   Widget build(BuildContext context) {
+   var  h = MediaQuery.of(context).size.height;
+   var w = MediaQuery.of(context).size.width;
     return Scaffold(
+      bottomNavigationBar: Padding(
+       padding: EdgeInsets.only(bottom:w*0.03,right:w*0.03 ),
+        child: defRow(context),
+      ),
       body: Column(
         children: [
           Container(
@@ -31,11 +36,11 @@ class _Lien_o_maticState extends State<Lien_o_matic> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(40),
+              padding:  EdgeInsets.only(top: w*0.1,bottom: w*0.05 ),
               child: Image.asset(
                 Lien_O_Matic_logo,
-                height: 86,
-                width: 176.74,
+                 height: h*0.5,
+                      width: w * 0.5,
                 color: kwhite,
               ),
             ),
@@ -69,20 +74,20 @@ class _Lien_o_maticState extends State<Lien_o_matic> {
                                 padding: EdgeInsets.only(
                                     top: w * 0.03, bottom: w * 0.03),
                                 child: SizedBox(
-                                  height: h * 0.09,
+                                  // height: h * 0.0,
                                   width: double.infinity,
                                   child: GestureDetector(
                                     onTap: () {
                                       PushTo(
                                           context,
                                           An_Architect(
-                                            project: staticData[index]["obj"],
+                                            project: staticData[index]["obj"], title: staticData[index]["heading"],
                                           ));
                                     },
                                     child: Card(
                                       elevation: 4,
                                       child: Padding(
-                                          padding: EdgeInsets.all(16),
+                                          padding: EdgeInsets.all(w*0.035),
                                           child: Text(
                                             staticData
                                                 .elementAt(index)['heading']
@@ -104,6 +109,7 @@ class _Lien_o_maticState extends State<Lien_o_matic> {
                           );
                         }),
                   ),
+                  
                   // GestureDetector(
                   //   onTap: () {
                   //     PushTo(context, An_Architect());

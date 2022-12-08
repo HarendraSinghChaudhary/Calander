@@ -1,7 +1,11 @@
+import 'package:calcu_lien/Screens/Introduction/menu.dart';
 import 'package:calcu_lien/utils/colors.dart';
+import 'package:calcu_lien/utils/constants/images.dart';
+import 'package:calcu_lien/utils/constants/screennavigation.dart';
+import 'package:calcu_lien/utils/styleguide.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:text_scroll/text_scroll.dart';
 class DefaultButton extends StatelessWidget {
   final String text;
   final Function() press;
@@ -163,4 +167,44 @@ const loader = Center(child: CircularProgressIndicator());
 
 Future showSnack(BuildContext context, String msg)async{
   return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+}
+
+
+// Defuault bottom bar for every screen 
+
+Row defRow(BuildContext context){
+  var w = MediaQuery.of(context).size.width;
+  
+  return   Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children:  [
+      SizedBox(
+        width: w*0.8,
+        child: const TextScroll(
+    "How to file your income tax on time and available, textscroll",
+    style: textScroll,
+    intervalSpaces: 50,
+    delayBefore: Duration(seconds: 1),
+    velocity: Velocity(pixelsPerSecond: Offset(50, 0)),
+    selectable: false,
+    mode: TextScrollMode.endless,
+  ),
+
+      ),
+      GestureDetector(
+        onTap: () {
+          pushRemove(context,const  Menu());
+        },
+        child: const CircleAvatar(
+          backgroundColor: Colors.transparent,
+          maxRadius: 25,
+          backgroundImage: AssetImage(homeIcon),
+        ),
+      )
+      
+       
+  
+      
+    ],
+  );
 }
