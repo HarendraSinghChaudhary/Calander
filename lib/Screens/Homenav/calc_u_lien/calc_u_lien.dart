@@ -161,6 +161,13 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                     children: [
                       InkWell(
                         onTap: () {
+                          List<String> dateArray = [];
+                          dateArray = _joningdate.split("/");
+                          String month = dateArray[0];
+                          String day = dateArray[1];
+                          String year = dateArray[2];
+                          selectedDate = DateTime(int.parse(year),
+                              int.parse(month), int.parse(day));
                           _selectDate("startDate", context);
                         },
                         child: Column(
@@ -228,7 +235,17 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                           ),
                           InkWell(
                             onTap: () {
-                              _selectDate("startDate", context);
+                              print(
+                                  MediaQuery.of(context).size.height / 2.7762);
+                              List<String> dateArray = [];
+                              dateArray = _enddate.split("/");
+                              String month = dateArray[0];
+                              String day = dateArray[1];
+                              String year = dateArray[2];
+                              selectedDate = DateTime(int.parse(year),
+                                  int.parse(month), int.parse(day));
+                              print("_enddate  $_enddate");
+                              //  _selectDate("startDate", context);
                             },
                             child: Card(
                               elevation: 3,
@@ -294,12 +311,12 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
   }
 
   Widget leftArrow() {
-    return const Positioned(
-      top: 469,
-      left: 10,
+    return Positioned(
+      top: (MediaQuery.of(context).size.height / 2.411) * 1.451428571428571,
+      left: (MediaQuery.of(context).size.height / 2.7762) * 0.038894736842106,
       child: SizedBox(
-        width: 100,
-        height: 100,
+        width: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
+        height: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
         child: Icon(
           Icons.arrow_forward,
           size: 50,
@@ -310,12 +327,12 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
   }
 
   Widget rightArrow() {
-    return const Positioned(
-      top: 466,
-      right: 10,
+    return Positioned(
+      top: (MediaQuery.of(context).size.height / 2.411) * 1.451428571428571,
+      right: (MediaQuery.of(context).size.height / 2.7762) * 0.038894736842106,
       child: SizedBox(
-        width: 100,
-        height: 100,
+        width: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
+        height: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
         child: Icon(
           Icons.arrow_back,
           size: 50,
@@ -327,13 +344,13 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
 
   Widget leftWheel() {
     return Positioned(
-      top: 307,
-      left: -304,
+      top: (MediaQuery.of(context).size.height / 2.411),
+      left: -(MediaQuery.of(context).size.height / 2.7762),
       child: Transform.rotate(
         angle: _angle,
         child: Container(
-          width: 420,
-          height: 420,
+          width: MediaQuery.of(context).size.height / 2,
+          height: MediaQuery.of(context).size.height / 2,
           decoration: BoxDecoration(
             color: Colors.white,
             // shape: BoxShape.circle,
@@ -381,11 +398,11 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
 
                       _oldAngle = _angle;
                       startdate = DateTime(staticdate.year, staticdate.month,
-                          staticdate.day + valueAnngle.toInt().abs() + 1);
+                          staticdate.day + valueAnngle.toInt().abs());
                       endDate = DateTime(
                           staticEnddate.year,
                           staticEnddate.month,
-                          staticEnddate.day + valueAnngle.toInt().abs() - 1);
+                          staticEnddate.day + valueAnngle.toInt().abs());
                       if (dropdownValue !=
                           "Florida Notice to Owner (45 Days)") {
                         endDate = DateTime(
@@ -398,7 +415,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                   } else {
                     setState(() {
                       var valueAnngle = value / 0.989010989019999;
-                     
+
                       if (value > 43) {
                         startdate = DateTime(staticdate.year, staticdate.month,
                             staticdate.day - valueAnngle.toInt() + 2);
@@ -542,13 +559,13 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
 
   Widget rightWheel() {
     return Positioned(
-      top: 310,
-      right: -304,
+      top: (MediaQuery.of(context).size.height / 2.411),
+      right: -(MediaQuery.of(context).size.height / 2.7762),
       child: Transform.rotate(
         angle: _angle - daysFilter,
         child: Container(
-          width: 420,
-          height: 420,
+          width: MediaQuery.of(context).size.height / 2,
+          height: MediaQuery.of(context).size.height / 2,
           decoration: BoxDecoration(
             color: Colors.white,
             // shape: BoxShape.circle,
