@@ -49,7 +49,11 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
   //drop down selected value
   String dropdownValue = "Florida Notice to Owner (45 Days)";
 
+  int date = 0;
+  int temValue = 0;
   int daysDifference = 45;
+  var year = 2022;
+
   DateTime selectedDate = DateTime(2022, 07, 29);
 
   var Notice = [
@@ -317,7 +321,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
       child: SizedBox(
         width: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
         height: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
-        child: Icon(
+        child: const Icon(
           Icons.arrow_forward,
           size: 50,
           color: Colors.black,
@@ -333,7 +337,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
       child: SizedBox(
         width: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
         height: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
-        child: Icon(
+        child: const Icon(
           Icons.arrow_back,
           size: 50,
           color: Colors.black,
@@ -389,20 +393,23 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                   );
 
                   var value = _angle * (180 / pi);
-
                   var angleValue = value.toInt();
 
                   if (value < 0) {
                     setState(() {
                       var valueAnngle = value / 0.978260869565217;
+                      if (date == 0) {
+                        date = valueAnngle.toInt().abs();
+                      } else {
+                        date = date + (valueAnngle.toInt().abs() - temValue);
+                      }
+                      temValue = valueAnngle.toInt().abs();
 
                       _oldAngle = _angle;
                       startdate = DateTime(staticdate.year, staticdate.month,
-                          staticdate.day + valueAnngle.toInt().abs());
-                      endDate = DateTime(
-                          staticEnddate.year,
-                          staticEnddate.month,
-                          staticEnddate.day + valueAnngle.toInt().abs());
+                          staticdate.day + date);
+                      endDate = DateTime(staticEnddate.year,
+                          staticEnddate.month, staticEnddate.day + date);
                       if (dropdownValue !=
                           "Florida Notice to Owner (45 Days)") {
                         endDate = DateTime(
@@ -452,101 +459,118 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                   });
                   setState(() {
                     //15 OCT
-                    if (angleValue == -75) {
-                      startdate = DateTime(staticdate.year, 10, 15);
+                    if (angleValue == -71) {
+                      startdate = DateTime(staticdate.year, 10, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //29 OCT
-                    if (angleValue == -91) {
-                      startdate = DateTime(staticdate.year, 10, 31);
+                    if (angleValue == -86) {
+                      startdate = DateTime(staticdate.year, 10, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 NOV
-                    if (angleValue == -105) {
-                      startdate = DateTime(staticdate.year, 11, 15);
+                    if (angleValue == -102) {
+                      startdate = DateTime(staticdate.year, 11, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //30 NOV
-                    if (angleValue == -120) {
-                      startdate = DateTime(staticdate.year, 11, 30);
+                    if (angleValue == -116) {
+                      startdate = DateTime(staticdate.year, 11, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 DEC
-                    if (angleValue == -134) {
-                      startdate = DateTime(staticdate.year, 12, 15);
+                    if (angleValue == -131) {
+                      startdate = DateTime(staticdate.year, 12, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //31 DEC
-                    if (angleValue == -150) {
-                      startdate = DateTime(staticdate.year, 12, 31);
+                    if (angleValue == -146) {
+                      startdate = DateTime(staticdate.year, 12, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 JAN
-                    if (angleValue == 195) {
-                      startdate = DateTime(staticdate.year, 01, 15);
+                    if (angleValue == 197) {
+                      startdate = DateTime(staticdate.year, 01, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //31 JAN
-                    if (angleValue == 179) {
-                      startdate = DateTime(staticdate.year, 01, 31);
+                    if (angleValue == 182) {
+                      startdate = DateTime(staticdate.year, 01, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 FEB
-                    if (angleValue == -194) {
-                      startdate = DateTime(staticdate.year, 02, 15);
+                    if (angleValue == 162) {
+                      startdate = DateTime(staticdate.year, 02, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //28 FEB
                     if (angleValue == -207) {
-                      startdate = DateTime(staticdate.year, 02, 28);
+                      startdate = DateTime(staticdate.year, 02, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 MARCH
-                    if (angleValue == 137) {
-                      startdate = DateTime(staticdate.year, 03, 15);
+                    if (angleValue == 139) {
+                      startdate = DateTime(staticdate.year, 03, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //31 MARCH
-                    if (angleValue == 122) {
-                      startdate = DateTime(staticdate.year, 03, 31);
+                    if (angleValue == 124) {
+                      startdate = DateTime(staticdate.year, 03, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 April
-                    if (angleValue == 107) {
-                      startdate = DateTime(staticdate.year, 04, 15);
+                    if (angleValue == 108) {
+                      startdate = DateTime(staticdate.year, 04, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //30 APRIL
-                    if (angleValue == 92) {
-                      startdate = DateTime(staticdate.year, 04, 30);
+                    if (angleValue == 93) {
+                      startdate = DateTime(staticdate.year, 04, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 MAY
-                    if (angleValue == 76) {
-                      startdate = DateTime(staticdate.year, 05, 15);
+                    if (angleValue == 79) {
+                      startdate = DateTime(staticdate.year, 05, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //31 MAY
-                    if (angleValue == 60) {
-                      startdate = DateTime(staticdate.year, 05, 31);
+                    if (angleValue == 64) {
+                      startdate = DateTime(staticdate.year, 05, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //15 JUNE
-                    if (angleValue == 45) {
-                      startdate = DateTime(staticdate.year, 06, 15);
+                    if (angleValue == 48) {
+                      startdate = DateTime(staticdate.year, 06, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //30 JUNE
-                    if (angleValue == 30 ||
-                        angleValue == 390 ||
-                        angleValue == 750) {
-                      startdate = DateTime(staticdate.year, 06, 30);
+                    if (angleValue == 34) {
+                      startdate = DateTime(staticdate.year, 06, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     } //31 JULY
-                    if (angleValue == 360 ||
-                        angleValue == 0 ||
-                        angleValue == 720) {
-                      startdate = DateTime(staticdate.year, 07, 30);
+                    if (angleValue == 19) {
+                      startdate = DateTime(staticdate.year, 07, 10);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    }
+                    if (angleValue == 4) {
+                      startdate = DateTime(staticdate.year, 07, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     }
                     //31 AUGUST
-                    if (angleValue == -31 ||
-                        angleValue == -361 ||
-                        angleValue == -751) {
-                      startdate = DateTime(staticdate.year, 08, 31);
+                    if (angleValue == -11) {
+                      startdate = DateTime(staticdate.year, 08, 10);
                       endDate = startdate.add(Duration(days: daysDifference));
-                    } //30 SEPT
-                    if (angleValue == -61) {
-                      startdate = DateTime(staticdate.year, 09, 30);
+                    }
+                    if (angleValue == -26) {
+                      startdate = DateTime(staticdate.year, 08, 25);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    }
+
+                    //30 SEPT
+                    if (angleValue == -42) {
+                      startdate = DateTime(staticdate.year, 09, 10);
+                      endDate = startdate.add(Duration(days: daysDifference));
+                    }
+                    if (angleValue == -56) {
+                      startdate = DateTime(staticdate.year, 09, 25);
                       endDate = startdate.add(Duration(days: daysDifference));
                     }
 
                     if (startdate == DateTime(startdate.year, 07, 29)) {
                       _angle = 0;
                     }
+
+                    if (startdate.year == 2023) {
+                      year = 2023;
+                    }
+                    if (angleValue > -151 && angleValue < 0) {
+                      year = 2022;
+                    }
+                    startdate = DateTime(year, startdate.month, startdate.day);
+                    endDate = startdate.add(Duration(days: daysDifference));
                   });
                 },
               );
