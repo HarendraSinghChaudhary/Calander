@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:calcu_lien/Screens/Homenav/Help/help.dart';
-import 'package:calcu_lien/Screens/Homenav/homenav.dart';
 import 'package:calcu_lien/utils/constants/images.dart';
 import 'package:calcu_lien/utils/constants/screennavigation.dart';
 import 'package:calcu_lien/utils/styleguide.dart';
@@ -10,7 +8,6 @@ import 'package:calcu_lien/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Calc_u_Lien extends StatefulWidget {
   const Calc_u_Lien({Key? key}) : super(key: key);
@@ -332,7 +329,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
 
   Widget rightArrow() {
     return Positioned(
-      top: (MediaQuery.of(context).size.height / 2.411) * 1.451428571428571,
+      top: (MediaQuery.of(context).size.height / 2.411) * 1.462,
       right: (MediaQuery.of(context).size.height / 2.7762) * 0.038894736842106,
       child: SizedBox(
         width: (MediaQuery.of(context).size.height / 2) * 0.238095238095238,
@@ -411,133 +408,6 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                           endDate.year, endDate.month, endDate.day + 2);
                     }
                   });
-
-                  // setState(() {
-                  //   if (angleValue > 360) {
-                  //     _angle = 0;
-                  //   }
-                  // });
-
-                  // setState(() {
-                  //   if (angleValue < -360) {
-                  //     _angle = 0;
-                  //   }
-                  // });
-                  // setState(() {
-                  //   //15 OCT
-                  //   if (angleValue == -71) {
-                  //     startdate = DateTime(staticdate.year, 10, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //29 OCT
-                  //   if (angleValue == -86) {
-                  //     startdate = DateTime(staticdate.year, 10, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 NOV
-                  //   if (angleValue == -102) {
-                  //     startdate = DateTime(staticdate.year, 11, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //30 NOV
-                  //   if (angleValue == -116) {
-                  //     startdate = DateTime(staticdate.year, 11, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 DEC
-                  //   if (angleValue == -131) {
-                  //     startdate = DateTime(staticdate.year, 12, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //31 DEC
-                  //   if (angleValue == -146) {
-                  //     startdate = DateTime(staticdate.year, 12, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 JAN
-                  //   if (angleValue == 197) {
-                  //     startdate = DateTime(staticdate.year, 01, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //31 JAN
-                  //   if (angleValue == 182) {
-                  //     startdate = DateTime(staticdate.year, 01, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 FEB
-                  //   if (angleValue == 162) {
-                  //     startdate = DateTime(staticdate.year, 02, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //28 FEB
-                  //   if (angleValue == -207) {
-                  //     startdate = DateTime(staticdate.year, 02, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 MARCH
-                  //   if (angleValue == 139) {
-                  //     startdate = DateTime(staticdate.year, 03, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //31 MARCH
-                  //   if (angleValue == 124) {
-                  //     startdate = DateTime(staticdate.year, 03, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 April
-                  //   if (angleValue == 108) {
-                  //     startdate = DateTime(staticdate.year, 04, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //30 APRIL
-                  //   if (angleValue == 93) {
-                  //     startdate = DateTime(staticdate.year, 04, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 MAY
-                  //   if (angleValue == 79) {
-                  //     startdate = DateTime(staticdate.year, 05, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //31 MAY
-                  //   if (angleValue == 64) {
-                  //     startdate = DateTime(staticdate.year, 05, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //15 JUNE
-                  //   if (angleValue == 48) {
-                  //     startdate = DateTime(staticdate.year, 06, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //30 JUNE
-                  //   if (angleValue == 34) {
-                  //     startdate = DateTime(staticdate.year, 06, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   } //31 JULY
-                  //   if (angleValue == 19) {
-                  //     startdate = DateTime(staticdate.year, 07, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   }
-                  //   if (angleValue == 4) {
-                  //     startdate = DateTime(staticdate.year, 07, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   }
-                  //   //31 AUGUST
-                  //   if (angleValue == -11) {
-                  //     startdate = DateTime(staticdate.year, 08, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   }
-                  //   if (angleValue == -26) {
-                  //     startdate = DateTime(staticdate.year, 08, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   }
-
-                  //   //30 SEPT
-                  //   if (angleValue == -42) {
-                  //     startdate = DateTime(staticdate.year, 09, 10);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   }
-                  //   if (angleValue == -56) {
-                  //     startdate = DateTime(staticdate.year, 09, 25);
-                  //     endDate = startdate.add(Duration(days: daysDifference));
-                  //   }
-
-                  //   if (startdate == DateTime(startdate.year, 07, 29)) {
-                  //     _angle = 0;
-                  //   }
-
-                  //   if (startdate.year == 2023) {
-                  //     year = 2023;
-                  //   }
-                  //   if (angleValue > -151 && angleValue < 0) {
-                  //     year = 2022;
-                  //   }
-                  //   startdate = DateTime(year, startdate.month, startdate.day);
-                  //   endDate = startdate.add(Duration(days: daysDifference));
-                  // });
                 },
               );
             },
@@ -595,126 +465,19 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
 
                   var value = _angle * (180 / pi);
 
-                  var angleValue = value.toInt();
+                  setState(() {
+                    var valueAnngle = value / 0.986301369863014;
 
-                  if (value < 0) {
-                    setState(() {
-                      var valueAnngle = value / 0.978260869565217;
+                    _oldAngle = _angle;
+                    startdate = DateTime(staticdate.year, staticdate.month,
+                        staticdate.day - valueAnngle.toInt());
 
-                      _oldAngle = _angle;
-                      startdate = DateTime(staticdate.year, staticdate.month,
-                          staticdate.day + valueAnngle.toInt().abs() + 1);
+                    if (dropdownValue == "Florida Notice to Owner (45 Days)") {
                       endDate = DateTime(
-                          staticEnddate.year,
-                          staticEnddate.month,
-                          staticEnddate.day + valueAnngle.toInt().abs() - 1);
-                      if (dropdownValue == "90 days") {
-                        endDate = DateTime(
-                            endDate.year, endDate.month, endDate.day + 2);
-                      } else {
-                        endDate = DateTime(
-                            endDate.year, endDate.month, endDate.day + 2);
-                      }
-                    });
-                  } else {
-                    setState(() {
-                      var valueAnngle = value / 0.989010989019999;
-
-                      if (value > 43) {
-                        startdate = DateTime(staticdate.year, staticdate.month,
-                            staticdate.day - valueAnngle.toInt() + 2);
-                      } else {
-                        startdate = DateTime(staticdate.year, staticdate.month,
-                            staticdate.day - valueAnngle.toInt() + 1);
-                      }
-
+                          startdate.year, startdate.month, startdate.day + 45);
+                    } else {
                       endDate = DateTime(
-                          staticEnddate.year,
-                          staticEnddate.month,
-                          staticEnddate.day - valueAnngle.toInt() - 1);
-                      if (dropdownValue == "90 days") {
-                        endDate = DateTime(
-                            endDate.year, endDate.month, endDate.day - 2);
-                      } else {
-                        endDate = DateTime(
-                            endDate.year, endDate.month, endDate.day + 2);
-                      }
-                    });
-                  }
-                  setState(() {
-                    if (angleValue > 360) {
-                      _angle = 0;
-                    }
-                  });
-
-                  setState(() {
-                    if (angleValue < -360) {
-                      _angle = 0;
-                    }
-                  });
-                  setState(() {
-                    //29 OCT
-                    if (angleValue == -91) {
-                      startdate = DateTime(staticdate.year, 10, 31);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //30 NOV
-                    if (angleValue == -120) {
-                      startdate = DateTime(staticdate.year, 11, 30);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //31 DEC
-                    if (angleValue == -150) {
-                      startdate = DateTime(staticdate.year, 12, 31);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //31 JAN
-                    if (angleValue == 178) {
-                      startdate = DateTime(staticdate.year, 01, 31);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //28 FEB
-                    if (angleValue == -207) {
-                      startdate = DateTime(staticdate.year, 02, 28);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //31 MARCH
-                    if (angleValue == 122) {
-                      startdate = DateTime(staticdate.year, 03, 31);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //30 APRIL
-                    if (angleValue == 92) {
-                      startdate = DateTime(staticdate.year, 04, 30);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //31 MAY
-                    if (angleValue == 60) {
-                      startdate = DateTime(staticdate.year, 05, 31);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //30 JUNE
-                    if (angleValue == 30 ||
-                        angleValue == 390 ||
-                        angleValue == 750) {
-                      startdate = DateTime(staticdate.year, 06, 30);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //31 JULY
-                    if (angleValue == 360 ||
-                        angleValue == 0 ||
-                        angleValue == 720) {
-                      startdate = DateTime(staticdate.year, 07, 30);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    }
-                    //31 AUGUST
-                    if (angleValue == -31 ||
-                        angleValue == -361 ||
-                        angleValue == -751) {
-                      startdate = DateTime(staticdate.year, 08, 31);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    } //30 SEPT
-                    if (angleValue == -61) {
-                      startdate = DateTime(staticdate.year, 09, 30);
-                      endDate = startdate.add(Duration(days: daysDifference));
-                    }
-
-                    if (startdate == DateTime(startdate.year, 07, 29)) {
-                      _angle = 0;
+                          startdate.year, startdate.month, startdate.day + 90);
                     }
                   });
                 },
