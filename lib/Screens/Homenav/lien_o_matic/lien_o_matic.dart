@@ -81,7 +81,7 @@ class _LienOMaticState extends State<LienOMatic> {
                                       PushTo(
                                           context,
                                           An_Architect(
-                                            project: staticData[index]["obj"], title: staticData[index]["heading"],
+                                            project: staticData[index]["obj"], title: staticData[index]["subheading"],
                                           ));
                                     },
                                     child: Card(

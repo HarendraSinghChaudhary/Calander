@@ -65,6 +65,7 @@ var project1 = {
 const staticData = [
   {
     "heading": "Florida Private Bonded & Nonbonded Projects",
+    "subheading":"Private Projects",
     "obj": [
       {
         "name": "Architect Engineer, or Surveyor",
@@ -186,6 +187,7 @@ const staticData = [
   },
   {
     "heading": "Florida State/Municipal Projects",
+    "subheading":"Public Projects",
     "obj": [
       {
         "name": "Contractor (or supplier to the owner)",
@@ -280,6 +282,7 @@ const staticData = [
   },
   {
     "heading": "Florida Department of Transportation Projects",
+    "subheading":"FDOT Projects",
     "obj": [
       {
         "name": "Contractor (or supplier to the owner)",
@@ -374,6 +377,7 @@ const staticData = [
   },
   {
     "heading": "Federal Miller Act Projects",
+    "subheading":"Federal Projects",
     "obj": [
       {
         "name": "Contractor (or supplier to the owner)",

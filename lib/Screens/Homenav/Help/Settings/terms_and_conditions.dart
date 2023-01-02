@@ -58,6 +58,8 @@ BY USING THIS APP AND ITS TOOLS, YOU UNDERSTAND AND AGREE TO THESE TERMS AND DIS
                   )
                 ]
               )),
+           
+           
               // Text(
               //   tAndC,
               //   style: textScroll.copyWith(color: kblack),
