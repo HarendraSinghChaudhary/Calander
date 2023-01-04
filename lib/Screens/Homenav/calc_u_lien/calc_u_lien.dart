@@ -182,7 +182,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                             ),
                             SizedBox(
                               // height: h * 0.085,
-                              // width: w * 0.45,
+                              width: w * 0.45,
                               child: Card(
                                 elevation: 3,
                                 child: Padding(
@@ -192,7 +192,7 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                                       left: w * 0.06,
                                       right: w * 0.06),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       const Icon(Icons.calendar_month_sharp,
                                           color: ktiledarkcolor),
@@ -248,40 +248,43 @@ class _Calc_u_LienState extends State<Calc_u_Lien> {
                               print("_enddate  $_enddate");
                               //  _selectDate("startDate", context);
                             },
-                            child: Card(
-                              elevation: 3,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    top: w * 0.01,
-                                    bottom: w * 0.01,
-                                    left: w * 0.06,
-                                    right: w * 0.06),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(Icons.calendar_month_sharp,
-                                        color: ktiledarkcolor),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: w * 0.024),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            _enddate,
-                                            style: textbold.copyWith(
-                                                color: ktiledarkcolor),
-                                          ),
-                                          Text(
-                                            _endDayName,
-                                            style: textbold.copyWith(
-                                                color: ktiledarkcolor),
-                                          ),
-                                        ],
+                            child: SizedBox(
+                               width: w * 0.45,
+                              child: Card(
+                                elevation: 3,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: w * 0.01,
+                                      bottom: w * 0.01,
+                                      left: w * 0.06,
+                                      right: w * 0.06),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Icon(Icons.calendar_month_sharp,
+                                          color: ktiledarkcolor),
+                                      const SizedBox(
+                                        width: 10,
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsets.only(top: w * 0.024),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              _enddate,
+                                              style: textbold.copyWith(
+                                                  color: ktiledarkcolor),
+                                            ),
+                                            Text(
+                                              _endDayName,
+                                              style: textbold.copyWith(
+                                                  color: ktiledarkcolor),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

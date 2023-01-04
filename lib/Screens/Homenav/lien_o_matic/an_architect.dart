@@ -66,7 +66,7 @@ class _An_ArchitectState extends State<An_Architect> {
           Padding(
             padding:  EdgeInsets.only(left: w * 0.07,top: w * 0.02),
             child: Text(
-        "Select your role",
+        "I am the... (select your role)",
         style: textRegular.copyWith(fontWeight: FontWeight.bold,color: kblack),
       ),
           ),
@@ -195,40 +195,20 @@ class _An_ArchitectState extends State<An_Architect> {
                                   ),
                                 ),
                              
-                             
-                              SizedBox(
-                                height: h * 0.02,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.end,
-                                children: [
-                                  DefaultEButton(
-                                      width: w * 0.35,
-                                      height: h * 0.055,
-                                      text: "Check exceptions",
-                                      txtcolor: kblack,
-                                      radius: 4,
-                                      press: () {
-                                        pushTo(context, exceptions());
-                                      },
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      btncolor: klightThemeClr),
-                                  // DefaultEButton(
-                                  //     width: w * 0.35,
-                                  //     height: h * 0.055,
-                                  //     text: "Get more help",
-                                  //     txtcolor: kblack,
-                                  //     radius: 4,
-                                  //     press: () {
-                                  //       pushTo(context,
-                                  //           HomeNav(currentindex: 4));
-                                  //     },
-                                  //     fontWeight: FontWeight.w400,
-                                  //     fontSize: 12,
-                                  //     btncolor: klightThemeClr)
-                                ],
+                              Padding(
+                                padding:  EdgeInsets.only(top:h * 0.02),
+                                child: DefaultEButton(
+                                    width: double.infinity,
+                                    height: h * 0.055,
+                                    text: "Check exceptions",
+                                    txtcolor: kblack,
+                                    radius: 4,
+                                    press: () {
+                                      pushTo(context, exceptions());
+                                    },
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    btncolor: klightThemeClr),
                               )
                             ],
                           ),
@@ -493,36 +473,20 @@ class _An_ArchitectState extends State<An_Architect> {
                               //     ),
                               //   ],
                               // ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.end,
-                                children: [
-                                  DefaultEButton(
-                                      width: w * 0.35,
-                                      height: h * 0.055,
-                                      text: "Check exceptions",
-                                      txtcolor: kblack,
-                                      radius: 4,
-                                      press: () {
-                                        pushTo(context, exceptions());
-                                      },
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      btncolor: klightThemeClr),
-                                  // DefaultEButton(
-                                  //     width: w * 0.35,
-                                  //     height: h * 0.055,
-                                  //     text: "Get more help",
-                                  //     txtcolor: kblack,
-                                  //     radius: 4,
-                                  //     press: () {
-                                  //       pushTo(context,
-                                  //           HomeNav(currentindex: 4));
-                                  //     },
-                                  //     fontWeight: FontWeight.w400,
-                                  //     fontSize: 12,
-                                  //     btncolor: klightThemeClr)
-                                ],
+                              Padding(
+                                padding:  EdgeInsets.only(top:h * 0.02),
+                                child: DefaultEButton(
+                                    width: double.infinity,
+                                    height: h * 0.055,
+                                    text: "Check exceptions",
+                                    txtcolor: kblack,
+                                    radius: 4,
+                                    press: () {
+                                      pushTo(context, exceptions());
+                                    },
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    btncolor: klightThemeClr),
                               )
                             ],
                           ),
